@@ -1,6 +1,7 @@
-from app.db.session import reset_db
+from app.db.session import reset_db, engine
+from sqlmodel import SQLModel
+from app.db import models
 
-if __name__ == "__main__":
-    print("🚀 Resetting & initializing database...")
-    reset_db()
-    print("✅ Database ready.")
+def init_db():
+    SQLModel.metadata.create_all(engine)
+
