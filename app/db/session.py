@@ -4,7 +4,7 @@ from app.config import settings
 # Import models so SQLModel is aware of them
 from app.db import models  
 
-engine = create_engine(settings.DATABASE_URL, pool_pre_ping=False)
+engine = create_engine(settings.DATABASE_URL, echo=False)
 
 def init_db():
     SQLModel.metadata.create_all(engine)

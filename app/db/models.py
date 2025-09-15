@@ -1,11 +1,11 @@
 from typing import Optional
 from datetime import datetime, date
 from sqlmodel import SQLModel, Field, Relationship, UniqueConstraint
-
+from sqlalchemy import Column, BigInteger
 
 class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    telegram_chat_id: int = Field(index=True, unique=True)
+    telegram_chat_id: int = Field(sa_column=Column(BigInteger, index=True, unique=True))
     tz: str = "Africa/Lagos"
     morning_hour: int = 6
     reflection_hour: int = 21
